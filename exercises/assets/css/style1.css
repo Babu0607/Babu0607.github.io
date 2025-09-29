@@ -100,11 +100,19 @@ body {
 
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4d0497c (Creativity idea)
 h1 {
     font-size: var(--fs-xxxl);
     line-height: 1.2;
     font-family: var(--font-serif);
     font-weight: normal;
+<<<<<<< HEAD
+=======
+    color: black;
+>>>>>>> 4d0497c (Creativity idea)
 }
 
 h2 {
@@ -131,4 +139,13 @@ p {
 	margin-bottom: 12px;
     font-family: var(--font-sans);
 
+<<<<<<< HEAD
+=======
+}
+
+a {
+
+    color: brown;
+
+>>>>>>> 4d0497c (Creativity idea)
 }
