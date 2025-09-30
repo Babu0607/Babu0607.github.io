@@ -13,8 +13,6 @@ img { width: 100%; height: auto }
 
 :root {
 
-<<<<<<< HEAD
-=======
 
     /* Color variables */
     --black-000: #000000;
@@ -231,7 +229,6 @@ img { width: 100%; height: auto }
     --trend-900: #0e2439;
     
 
->>>>>>> 4d0497c (Creativity idea)
     /* Alternatives to default sans-serif font */
     --font-sans: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica, Arial, sans-serif;
 
@@ -311,15 +308,11 @@ section > * { max-width: 1600px; margin-left: auto; margin-right: auto }
 
 body h1 {font-family: var(--font-serif);}
 
-<<<<<<< HEAD
-=======
 body { 
     background-color: var(--blue-200);
     font-family: var(--font-serif);
 }
 
-
->>>>>>> 4d0497c (Creativity idea)
 h1 {
     font-size: var(--fs-xxxl);
     margin-top: 32px;
@@ -338,9 +331,6 @@ p {
 	font-size: var(--fs-base);
     line-height: 1.7;
 	margin-bottom: 12px;
-<<<<<<< HEAD
-}
-=======
 }
 
 .section-1 {
@@ -377,4 +367,3 @@ p {
     background-color: var(--purple-300);
 
 }
->>>>>>> 4d0497c (Creativity idea)

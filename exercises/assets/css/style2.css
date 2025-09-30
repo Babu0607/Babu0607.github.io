@@ -94,26 +94,19 @@ section > * { max-width: 1600px; margin-left: auto; margin-right: auto }
 
 /* ============= TYPOGRAPHY ============ */
 
-<<<<<<< HEAD
-=======
-
 body {
 
     background-color: lightblue;
 
 }
 
->>>>>>> 4d0497c (Creativity idea)
 h1 {
     font-size: var(--fs-xxxl);
     margin-top: 32px;
     line-height: 1.2;
     font-family: var(--font-serif);
     font-weight: normal;
-<<<<<<< HEAD
-=======
     color: white;
->>>>>>> 4d0497c (Creativity idea)
 }
 
 h2 {
@@ -131,13 +124,10 @@ p {
 	margin-bottom: 12px;
     font-family: var(--font-sans);
 
-<<<<<<< HEAD
-=======
 }
 
 a {
 
     color: white;
 
->>>>>>> 4d0497c (Creativity idea)
 }
