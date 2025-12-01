@@ -12,3 +12,20 @@ footer.theme-dark   { background-color: #0f172a }
 
 
 header .col-text h2, .col-1 > h3 { line-height: 1.8 }
+
+
+
+
+.gradient-text {
+    background: linear-gradient(to right,
+        var(--rose-200), /* Start color */
+        var(--orange-800) /* End color */
+    );
+
+    /* Clip the background to the text's shape */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Make the text transparent so the background shows */
+    color: transparent;
+}
