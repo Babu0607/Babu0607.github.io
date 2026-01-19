@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>80/20 Guide to JavaScript Concepts</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --purple-primary: #a855f7;
+            --purple-light: #d8b4fe;
+            --text-main: #e2e8f0;
+            --text-dim: #94a3b8;
+            --border: #334155;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--purple-primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: -0.025em;
+        }
+
+        h2 {
+            color: var(--purple-primary);
+            font-size: 1.75rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--purple-primary);
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: var(--purple-light);
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .intro-section {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        .content-card {
+            margin-bottom: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #2d3748;
+            color: var(--purple-light);
+            text-align: left;
+            padding: 12px;
+            border: 1px solid var(--border);
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li::marker {
+            color: var(--purple-primary);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border);
+            margin: 40px 0;
+        }
+
+        .highlight {
+            color: var(--purple-light);
+            font-weight: 600;
+        }
+
+        code {
+            background: #000;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #f472b6;
+        }
+
+        img {width: 100%; height: auto;}
+
+        .video-wrapper {
+            max-width: 800px; /* Limits the size of the player */
+            margin: 20px auto;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .video-element {
+            width: 100%;  /* Makes the video responsive */
+            height: auto;
+            display: block;
+        }
+
+        .audio-container {
+        max-width: 400px;
+        background: #1e293b; /* Matches the dark theme */
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #334155;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        margin: 20px auto;
+        text-align: center;
+        }
+
+        .audio-title {
+            color: #a855f7; /* Modern purple accent */
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-family: sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .audio-player {
+            width: 100%;
+            height: 40px;
+            outline: none;
+        }
+
+        /* Optional: Simple hover effect */
+        .audio-container:hover {
+            border-color: #a855f7;
+            transition: border-color 0.3s ease;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>An 80/20 Guide to Core JavaScript Concepts</h1>
+
+        <img src="assets/img/unnamed.png" alt="infographic">
+
+     <div class="video-wrapper">
+        <video controls poster="placeholder-image.jpg" class="video-element">
+            <source src="assets/img/JavaScript_from_Zero.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="audio-container">
+        <h3 class="audio-title">Audio Track Title</h3>
+        <audio controls class="audio-player">
+            <source src="assets/img/JavaScript_Fundamentals_Non-Blocking_Code_and_Const_Let.m4a" type="audio/mp4">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+
+        <p style="color: var(--text-dim); font-size: 1.1rem;">Mastering the Essentials for Maximum Impact</p>
+    </header>
+
+    <div class="intro-section">
+        <p>This guide is designed for professionals who require an efficient, high-level understanding of fundamental JavaScript concepts. Following the <strong>80/20 principle</strong>, we will concentrate on the core ideas that provide the most value in practical application. To maintain a focus on conceptual clarity and support efficient learning, this document will deliberately omit code specifics, instead emphasizing the strategic principles that underpin the language. By understanding why and how these core components work, you will gain a robust mental model for interpreting and interacting with JavaScript in any professional context.</p>
+    </div>
+
+    <hr>
+
+    <section class="content-card">
+        <h2>1. Integrating JavaScript into a Web Environment</h2>
+        <p>Strategically adding JavaScript to a web page is a foundational skill that directly impacts user experience and page performance. The method of integration determines how quickly a page becomes interactive and how efficiently it loads.</p>
+        
+        
+
+        <p>There are two primary methods for adding JavaScript to a web page: including it directly within the HTML document or linking to an external JavaScript file. While direct inclusion is possible, using external files is the recommended best practice for several key reasons:</p>
+        
+        <ul>
+            <li><span class="highlight">Separation of Concerns:</span> It keeps the structure (HTML) and behavior (JavaScript) in separate files, making the code cleaner and easier to read.</li>
+            <li><span class="highlight">Maintainability:</span> This separation simplifies updates and debugging, as changes to the script don't require altering the HTML file.</li>
+            <li><span class="highlight">Performance Caching:</span> On websites with multiple pages, a browser can download the external JavaScript file once and cache it, leading to significantly faster load times on subsequent pages.</li>
+        </ul>
+        <p>A core performance principle is to ensure that JavaScript is <strong>"non-blocking,"</strong> meaning it does not delay the loading and rendering of the page's HTML content. If a browser has to stop rendering the page to execute a script, the user perceives the site as slow.</p>
+    </section>
+
+    <section class="content-card">
+        <h2>2. The Foundation: Storing Information with Variables</h2>
+        <p>In JavaScript, a variable is the primary mechanism for storing and managing information. A helpful analogy is to think of a variable as a container or a storage box that holds a value.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Keyword</th>
+                    <th>Core Purpose & Use Case</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>let</strong></td>
+                    <td>Used for values that can be reassigned, such as a score in a game or a user's current account balance.</td>
+                </tr>
+                <tr>
+                    <td><strong>const</strong></td>
+                    <td>Used for values that should not be changed after their initial assignment, such as a person's date of birth.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The standard naming convention in JavaScript is <code>camelCase</code>. Multi-word variable names are joined together without spaces, with the first word in lowercase and each subsequent word capitalized (e.g., <code>userFirstName</code>).</p>
+    </section>
+
+    <section class="content-card">
+        <h2>3. Understanding Core Data Types</h2>
+        
+        
+
+        <h3>3.1. String Data: Working with Text</h3>
+        <p>A string is a sequence of characters used to represent text. This system uses <strong>zero-based indexing</strong>, meaning the first character is at position 0. A principle to remember is that strings in JavaScript are <strong>immutable</strong>—they cannot be changed. String methods return a new string with requested changes rather than altering the original.</p>
+
+        <h3>3.2. Number Data: Performing Calculations</h3>
+        <p>The number data type encompasses both integers and floating-point numbers. JavaScript supports all basic arithmetic operations. When multiple operations are present, the language follows standard mathematical operator precedence.</p>
+
+        <h3>3.3. Boolean and Null Data: Representing State</h3>
+        <ul>
+            <li><strong>Boolean:</strong> A data type that can only hold <code>true</code> or <code>false</code>.</li>
+            <li><strong>Null:</strong> A special data type used to represent the <em>intentional</em> absence of a value. It is distinct from a score of 0 or an empty string.</li>
+        </ul>
+    </section>
+
+    <section class="content-card">
+        <h2>4. A Defining Feature: JavaScript as a Loosely-Typed Language</h2>
+        <p>JavaScript is a loosely-typed (or dynamically-typed) language. This has two main implications:</p>
+        <ul>
+            <li>You do not have to declare the data type of a variable when you create it.</li>
+            <li>A single variable can hold different data types at different times.</li>
+        </ul>
+        <p>This flexibility contrasts with strongly-typed languages where a variable's data type is fixed upon declaration. While adaptable, it places responsibility on the developer to track transformations using tools like the <code>typeof</code> operator.</p>
+    </section>
+
+    <section class="content-card">
+        <h2>5. Conclusion: Key Principles for Effective Understanding</h2>
+        <p>This guide has focused on the foundational concepts that deliver the most impact. Mastering how to store information with variables, understanding the primary data types, and recognizing the implications of JavaScript as a loosely-typed language provides the strongest foundation for effectively working with code.</p>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.85rem;">
+        &copy; 2026 Core JavaScript Concepts Guide
+    </footer>
+</div>
+
+</body>
+</html>
