@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Gridview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bgDark: "#0f172a",
+            cardDark: "#020617"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-bgDark text-slate-200 min-h-screen p-6">
+
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-2xl font-semibold mb-6 text-center">
+      Product Grid
+    </h1>
+
+    <!-- Grid Container -->
+    <div
+      id="productGrid"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+    >
+      <!-- JS injects cards here -->
+    </div>
+  </div>
+
+  <script src="list-gridview.js"></script>
+</body>
+</html>

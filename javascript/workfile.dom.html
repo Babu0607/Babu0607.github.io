@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        button{
+            background-color: green;
+            color: white;
+            border: solid 1px green;
+            padding: 8px 12px;
+        }
+
+        .color-red{
+            color: red;
+            background: pink;
+        }
+
+        input{
+            padding: 4px 12px;
+            background-color: lightblue;
+            border: solid 1px black;
+        }
+
+        .input-error{
+            background-color: pink;
+            border: solid 1px red;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1 id="myHeading">My Heading</h1>
+    <p id="myPara">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+    <button onclick="changeHeading()">Update Heading</button>
+
+    <button onclick="changePara()">Update Para</button>
+
+    <p><input type="text" id="userName" placeholder="Enter your First Name"></p>
+
+    <button onclick="showName()">Submit Name</button>
+
+     <p><input type="text" id="userNumber" placeholder="Enter your User Number"></p>
+
+     <h1>Array of object</h1>
+     <div id="output-products"></div>
+
+    <button onclick="showNumber()">Submit Number</button>
+    
+
+    <script>
+
+        function changeHeading(){
+            //Javascript          HTML
+            let varHeading = document.getElementById("myHeading");
+            console.log(`Text in Heading: ${varHeading.innerText}`);
+            varHeading.innerText = "Heading Text updated" 
+
+        }
+
+        function changePara(){
+             //Javascript          HTML
+            let varPara = document.getElementById("myPara");
+            varPara.classList.add("color-red");
+            
+        }
+
+        function showName(){
+            // Get the value from the input field
+            let name = document.getElementById('userName').value.trim();
+            let userName = document.getElementById('userName');
+
+            // Check that the trimmed value is not empty
+            if (name.length > 0) {
+                console.log(`Hello, ${name}!`);
+                 userName.classList.remove("input-error");
+            }
+            else {
+                console.log("Please enter your name.");
+                 userName.classList.add("input-error");
+                
+            }
+
+        }
+
+        function showNumber() {
+            const value = document.getElementById('userNumber').value.trim();
+            const userValue = document.getElementById('userNumber');
+
+            if (value !== '' && !isNaN(value)) {
+                console.log(`You entered the number ${Number(value)}`);
+                userValue.classList.remove("input-error");
+            }
+             else {
+                console.log("Please enter number");
+                 userValue.classList.add("input-error");
+                
+            }
+        }
+
+
+        // Creating an array of objects
+        const arrProducts = [
+            {
+                productID: 1001,
+                name: "Laptop",
+                price: 999.99,
+                inStock: true
+            },
+            {
+                productID: 1002,
+                name: "Mouse",
+                price: 24.99,
+                inStock: true
+            },
+            {
+                productID: 1003,
+                name: "Keyboard",
+                price: 59.99,
+                inStock: false
+            }
+        ];
+        console.log(arrProducts);
+
+
+        // Displaying data from arrProducts in HTML
+    // Get reference to the div container to hold the products output
+    const containerProducts = document.getElementById('output-products');
+
+    // Loop through each product
+    arrProducts.forEach(product => {
+        // Create a sub-heading tag for each product's name
+        const headingProducts = document.createElement('h3');
+        // Add product name to sub-heading tag
+        headingProducts.innerText = product.name;
+        
+        // Create paragraph for each product's details
+        const detailsProducts = document.createElement('p');
+        
+        // Check stock status
+        let stockStatus;
+        if (product.inStock) {
+            stockStatus = 'In Stock';
+        } else {
+            stockStatus = 'Out of Stock';
+        }
+        
+        // Add product details to paragraph page
+        detailsProducts.innerText = `Product ID: ${product.productID}
+        Price: €${product.price}
+        Stock Status: ${stockStatus}`;
+        
+        // Append heading and paragraph tags to div container
+        containerProducts.appendChild(headingProducts);
+        containerProducts.appendChild(detailsProducts);
+    });
+    
+
+
+
+
+    </script>
+    
+</body>
+
+
+</html>

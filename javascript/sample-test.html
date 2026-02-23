@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="paraText">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+
+    <button onclick="turnGreen()">Turn Green</button>
+    <button onclick="turnRed()">Turn Red</button>
+
+    <script>
+
+        //Task 1
+        //Imagine you are building an online store. Create three variables for a product name, its price, and its category (e.g., "Electronics"). Use a template literal to output: "New Arrival: [productName] ([category]) is now on sale for €[price]."
+
+        let productName = "Wireless Earbuds";
+        let price = 59.99;
+        let category = "Electronics";
+
+        console.log(`New Arrival: ${productName} (${category}) is now on sale for €${price}.`);
+
+
+        // Task 5.
+       /* Create a variable called currentSpeed and set it to 0.
+    •	You step on the gas: use a compound assignment operator to increase speed by 30.
+    •	You hit a turbo boost pad: use a compound assignment operator to multiply the speed by 3.
+    •	You hit a small bump: use the decrement operator to reduce speed by 1.
+    •	Output the final speed to the console. */
+
+
+        let currentSpeed = 0;
+        currentSpeed += 30;
+        currentSpeed *= 3
+        currentSpeed= currentSpeed - 1;
+        console.log(currentSpeed);
+
+
+        // Task 6
+        /* Write a function declaration that takes two parameters which represent the grade average and the attendance percentage, and checks if the student qualifies (grades 80 or higher AND attendance over 90). 
+        Call the function with argument values of 85 and 95.
+        Output appropriate success and failure messages to the console.
+        */
+
+        function doAward(grade, attendance){
+
+            if((grade >= 80 && (attendance >=90))){
+                console.log(`Award`);
+            }
+            else{
+                console.log(`No Award`);
+
+            }
+        }
+
+        doAward(85, 90);
+
+        // Task 7
+        /*Create a new <h3> heading with the text "My Favourite Links". Append it to the body of a linked web page.*/
+
+        let varMainHeading = document.createElement("h1");
+        varMainHeading.innerText = "My favorite links";
+        document.body.appendChild(varMainHeading);
+
+        //Task 8
+        /*In a linked HTML file, add a new <h2> tag with an ID of "sub-heading".
+        Use JavaScript to change its text to "Updated via JS" and change its color to blue.*/
+
+        let varSubHeading = document.createElement("h2");
+        varSubHeading.id = "sub-heading"
+        varSubHeading.innerText = "Updated via JS";
+        varSubHeading.style.color = "blue";
+        document.body.appendChild(varSubHeading);
+
+        //Task 9
+        /*Assume your JavaScript file is linked to an HTML web page. The web page has a <div> tag with an id of “paraText” and some sample text.
+        The page also has two buttons labelled "Turn Green" and "Turn Red."
+        •	Write an event handler function for the "Turn Green" button so that, when clicked, it will change the background colour of the <div> to green.
+        •	Write an event handler function for the "Turn Red" button so that, when clicked, it will change the background colour of the <div> to red.*/
+
+        function turnGreen(){
+            let paraText = document.getElementById("paraText");
+            paraText.style.color = "green";
+        }
+
+        function turnRed(){
+            let paraText = document.getElementById("paraText");
+            paraText.style.color = "red";
+        }
+
+        const objProduct = {
+            name: "Iphone",
+            price1: 900.00,
+            category1: "mobile-phone"
+
+        }
+
+        const {name, price1, category1} = objProduct
+        // console.log(`${name}, ${price1}, ${category1}`);
+         console.log(`${name}, productPrice: ${price1}`);
+
+        //Task 10
+        /*Create an array called arrWorkWeek containing the strings "Monday", "Tuesday", "Wednesday", "Thursday", and "Friday".
+        •	Log the length of the work week to the console.
+        •	Use destructuring to extract "Monday" and "Wednesday" into variables, while skipping over "Tuesday".*/
+        
+        const arrWorkWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+        console.log(arrWorkWeek.length);
+
+        const [monday, ,wednesday] = arrWorkWeek;
+        console.log(`Monday ${monday} Wednesday ${wednesday}`);
+
+        const arrCart = [
+            {item: "Laptop", price: 800, quantity: 1},
+            {item: "Monitor", price: 150, quantity: 2},
+            {item: "Mouse", price: 20, quantity: 5}
+
+        ]
+        
+
+        arrCart.foreach(product => {
+            console.log(product.item);
+            console.log(product.price);
+            console.log(product.quantity);
+        });
+
+    </script>
+    
+</body>
+
+</html>

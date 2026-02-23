@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .newHeadingClass { 
+        background-color: blue; 
+        color: pink; 
+        padding: 10px; 
+        border-radius: 5px
+        }
+
+        .messageOrderPlaced { 
+            background-color: lightgreen; 
+            color: #000; 
+            border: solid 1px green;
+            padding: 10px; 
+            border-radius: 5px
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1 id="bigHeading">Heading</h1>
+
+    <p id="paraText">Lorem ipsum" is standard, meaningless placeholder text used in publishing and design to show how a layout looks with text, focusing on visual form (typography, spacing) rather than content, derived from scrambled Latin text (Cicero) but altered to be nonsensical, and popularized by Letraset and desktop publishing software like PageMaker</p>
+
+    <!-- Button linked to event handler function -->
+    <button id="btn_1" onclick="changeHeading()">Update h1</button>
+
+    <button id="btn_2" onclick="restoreHeading()">Restore h1</button>
+
+    <button id="btn_3" onclick="doParaText()">Update para text</button>
+
+    <button id="btn_4" onclick="placeOrder()">Order product</button>
+
+    <div id="myDIV"> Sample Text </div>
+
+    <button id="btn_5" ondblclick="turnGreen()">Turn green</button>
+
+    <button id="btn_6" onmouseover="resetColour()">Reset colour</button>
+
+    <script>
+
+
+        // Create three variables with your first name, last name and favourite singer.
+        // use template literal tio output. "Hi name is [firstName] [lastName]"
+
+        let firstName = "John";
+        let secondName = "Smith";
+        let singerName  = "Suzanne vega";
+        console.log(`Hi my name is : ${firstName} ${secondName} and my favourite singer is ${singerName}`);
+
+        // ======== FUNCTION DECLARATIONS ========
+
+        displayGreeting();
+
+        // Function declaration	
+        function displayGreeting() {
+        console.log('Hello, world!');
+        }
+        // Outputs 'Hello, world!' to Console when called
+
+        displayGreeting();
+
+        // Function declaration with parameter
+        function showNumber(num) {
+        console.log(`Number passed as parameter is: ${num}`);
+        }
+
+        // Function call with argument
+        showNumber(42); 
+
+        // Function declaration with two parameters
+        function addTwoNumbers(num1, num2) {
+            // Outputs the sum of two numbers
+            console.log(`Sum is : ${num1 + num2}`); 
+            return(num1 +  num2);
+        }
+
+        // Function call with two arguments
+        let funcResult = addTwoNumbers(1, 9);
+        console.log(`Result of adding two numbers: ${funcResult}`);
+
+
+        function calculateTotal(price, tax){
+            total = price + tax;
+            return total;
+        }
+        calculateTotal(100,0.15)
+        console.log(total);
+
+        // Access a web page element with by its unique ID
+        let bigHeading = document.getElementById("bigHeading");
+
+        // JavaScript can change the content of an element
+        bigHeading.innerText = "New heading text from JS";
+        bigHeading.innerHTML = "New heading text in <i>italics</i> from JS";
+
+        // Function to change the heading properties and content
+        function changeHeading() {
+            // Get the HTML heading element from the web page
+            let bigHeading = document.getElementById('bigHeading');
+            // Update HTML element styles directly;
+            // bigHeading.style.backgroundColor = 'red';
+            // bigHeading.style.color = 'white';
+
+            // Add a new CSS class to the element
+            bigHeading.classList.add('newHeadingClass');
+
+            // Update HTML element content
+            // bigHeading.innerText = 'New heading text from JS';
+            // Update the HTML element content with HTML tag included
+            bigHeading.innerHTML = 'New heading text in <i>italics</i> from JS';
+        }
+
+        // Function to restore the heading to its original state
+        function restoreHeading() {
+            // Get the HTML heading element from the web page
+            let bigHeading = document.getElementById('bigHeading');
+            // Remove the CSS class from the element
+            bigHeading.classList.remove('newHeadingClass');
+            // Replace the new HTML element content with the original content
+            bigHeading.innerText = 'Big heading here';
+        }
+
+        // Function to change the paragraph content
+        function doParaText() {
+            // Get the HTML first paragraph of text from the web page
+            let strText = document.getElementById('paraText');
+            // Update its content
+            strText.innerText = 'New paragraph text from JS.';
+        }
+
+        // Create a new div element
+        let newDiv = document.createElement('div');
+
+        // Create a new large heading element 
+        let newH1 = document.createElement('h1');
+
+        // Create a new paragraph element
+        let newParagraph = document.createElement('p');
+
+        // Update the new paragraph details
+        newParagraph.id = "newPara";
+        newParagraph.classList.add('messageCorrect');
+        newParagraph.innerText = "Your order has been placed. Thank you";
+
+        // Add new element to the end of the web page.
+        document.body.appendChild(newParagraph);
+
+        // Function to add a new message to the page
+        function placeOrder() {
+            // Create a new HTML element
+            let newMessage = document.createElement("div");
+            // Add a CSS class to the new element
+            newMessage.classList.add("messageOrderPlaced");
+            // Add content to the new element
+            newMessage.innerHTML = "Your order has been placed. <b>Thank you</b>";
+            // Add the new element to the web page
+            document.body.appendChild(newMessage);
+        }
+
+          function addDIV() {
+
+            let newDIV = document.createElement("div");
+            newDIV.innerText = "Sample text";
+
+
+        }
+
+        // Function to add a new message to the page
+        function turnGreen() {
+            let myDIV = document.getElementById("myDIV");
+            myDIV.style.backgroundColor = "green";
+        }
+
+        // Function to add a new message to the page
+        function resetColour() {
+            let myDIV = document.getElementById("myDIV");
+            myDIV.style.backgroundColor = "white";
+        }
+
+        // ======== ANONYMOUS FUNCTIONS ========
+
+        // Anonymous function	
+        const showGreeting = function () {
+        console.log('Hello from anonymous function');
+        }
+
+        showGreeting(); // Outputs 'Hello from anonymous function' to console
+
+        // Immediately-invoked anonymous function
+        (function() {
+            console.log("Hello from immediately-invoked anonymous function");
+        })();
+
+        /**
+        * Asynchronous function to fetch user data from a remote API.
+        * Uses the Fetch API with async/await for cleaner promise handling.
+        */
+        async function fetchUserData() {
+        // Initiate a GET request to the RESTful API endpoint for user with ID 2
+        // The 'await' keyword pauses execution until the fetch Promise resolves
+        const response = await fetch("https://jsonplaceholder.typicode.com/users");
+        
+        // Check if the HTTP response status is in the successful range (200-299)
+        // response.ok is true for successful HTTP status codes, false otherwise
+        if (!response.ok) {
+            // If response has an error status code, log a message
+            // This handles cases like 404 (not found), 500 (server error), etc.
+            console.log("Network response was not ok");
+        }
+        else {
+            // For successful responses, parse the JSON body content
+            // response.json() returns a Promise that resolves with the parsed JSON
+            // 'await' is used to wait for the parsing to complete
+            const data = await response.json();
+            
+            // Output the parsed user data object to the console
+            // This will display properties like id, email, first_name, last_name, etc.
+            console.log(data);
+        }
+        }
+
+        // Execute the fetchUserData function to start the API request
+        // This initiates the asynchronous operation
+        fetchUserData();
+
+    </script>
+    
+</body>
+</html>
