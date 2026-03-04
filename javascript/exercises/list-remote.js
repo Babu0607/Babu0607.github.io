@@ -1,17 +1,17 @@
-// Fetch function
-async function fetchCountriesData() {
+async function fetchCountriesData(region="europe") {
+    const container = document.getElementById("remote-data-container");
+    container.innerHTML = "<p>Loading...</p>";
+
     try {
-        const response = await fetch("https://restcountries.com/v3.1/region/europe");
+        const response = await fetch(`https://restcountries.com/v3.1/region/${region}`);
         if (!response.ok) {
-            console.log(`Network response was not ok - Status: ${response.status}`);
-            return;
+            throw new Error(`Network error: ${response.status}`);
         }
         const data = await response.json();
         displayCountriesData(data);
     } catch (error) {
-        const container = document.getElementById("remote-data-container");
-        container.innerHTML = '<p class="error">⚠️ Failed to load data. Please try again later.</p>';   
-        console.error(`Error fetching data: ${error}`);
+        container.innerHTML = `<p class="no-results">⚠️ Could not load countries. Please try again.</p>`;
+        console.error(error);
     }
 }
 
@@ -40,13 +40,14 @@ function displayCountriesData(countriesArray) {
 // Fetch function
 async function fetchUsersData() {
     try {
-        const response = await fetch("https://randomuser.me/api/?results=10");
+        const response = await fetch("https://jsonplaceholder.typicode.com/users");
         if (!response.ok) {
             console.log(`Network response was not ok - Status: ${response.status}`);
             return;
         }
         const data = await response.json();
-        displayUsersData(data.results);
+        displayUsersData(data);
+
     } catch (error) {
         const container = document.getElementById("remote-data-container");
         container.innerHTML = '<p class="error">⚠️ Failed to load data. Please try again later.</p>';   
@@ -57,36 +58,39 @@ async function fetchUsersData() {
 function displayUsersData(usersArray) {
     const container = document.getElementById("remote-data-container");
     let htmlOutput = "";
-
     usersArray.forEach(user => {
         htmlOutput += `
-       <div style="border: 1px solid #ccc; padding: 12px; border-radius: 6px;">
-        <img src="${user.picture.thumbnail}" alt="Picture of ${user.name.first} ${user.name.last}" width="100">
             <p>
-            <b>${user.name.first} ${user.name.last}</b><br>
-            Email: ${user.email}<br>
-            Location: ${user.location.city}, ${user.location.country}
+            <b>${user.name} ${user.username}</b><br>
+            Email: <a href="mailto:${user.email}">${user.email}</a><br>
+            Website: <a href="http://${user.website}" target="_blank">${user.website}</a><br>
+            Location: ${user.address.street}, ${user.address.city}
             </p>
-            </div>
         `;
     });
     container.innerHTML = htmlOutput;
-}
+} 
 
-// Fetch function
-async function fetchRMData() {
+async function fetchRMData(name = "") {
     try {
-        const response = await fetch("https://rickandmortyapi.com/api/character");
-        if (!response.ok) {
-            console.log(`Network response was not ok - Status: ${response.status}`);
+        const url = name
+            // name not an empty string (user entered name in search box)
+            ? `https://rickandmortyapi.com/api/character/?name=${name}`
+            // name is an empty string (no name entered in search box)
+            : `https://rickandmortyapi.com/api/character`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.error) {
+            const container = document.getElementById("remote-data-container");
+            container.innerHTML = `No characters found matching "${name}".`;
             return;
         }
-        const data = await response.json();
         displayRMData(data.results);
     } catch (error) {
         const container = document.getElementById("remote-data-container");
-        container.innerHTML = '<p class="error">⚠️ Failed to load data. Please try again later.</p>';   
-        console.error(`Error fetching data: ${error}`);
+        container.innerHTML = `⚠️ Could not load data. Please try again.`;
+        console.error(error);
     }
 }
 
@@ -117,3 +121,64 @@ document.getElementById("button-container").addEventListener("click", function(e
         fetchRMData();   
     }
 });
+
+
+// Event listener on the parent container
+document.getElementById("button-container").addEventListener("click", function(e) {
+    if (e.target.id === "btn-countries") {
+        document.getElementById("filter-rm").style.display = "none";
+        document.getElementById("section-countries").style.display = "block";
+        fetchCountriesData();
+    }
+    else if (e.target.id === "btn-users") {
+        fetchUsersData();
+        document.getElementById("filter-rm").style.display = "none";
+        document.getElementById("section-countries").style.display = "none";
+    }
+    else if (e.target.id === "btn-rm") {
+        // Clears the search field
+         document.getElementById("characterSearch").value = "";
+        // Clear any existing data and show the filter section
+        document.getElementById("remote-data-container").innerHTML = "";
+        // loads all characters
+        fetchRMData(); 
+        // Show the filter 
+        document.getElementById("filter-rm").style.display = "block";
+        document.getElementById("section-countries").style.display = "none";
+    }   
+});
+
+const characterSearch = document.getElementById("characterSearch");
+
+// Fire a fetch on every keystroke
+characterSearch.addEventListener("input", () => {
+    const searchTerm = characterSearch.value.trim();
+    // Don't fetch if the field is empty
+    if (searchTerm === "") {
+        const container = document.getElementById("remote-data-container");
+        container.innerHTML = "";
+        return;
+    }
+    fetchRMData(searchTerm);
+});
+
+
+// -------------------------------------------------------
+// Countries by region dropdown
+// -------------------------------------------------------
+
+regionSelect.addEventListener("change", () => {
+    const selectedRegion = regionSelect.value;
+    fetchCountriesData(selectedRegion);
+});
+
+// Load default region on page load
+window.addEventListener("load", () => {
+  // Force default selection on reload
+  regionSelect.value = "europe";
+});
+
+
+// -------------------------------------------------------
+// COUNTRIES FETCH
+// -------------------------------------------------------
